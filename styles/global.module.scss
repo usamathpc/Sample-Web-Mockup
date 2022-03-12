@@ -1,0 +1,32 @@
+// .global {
+//   * {
+//     box-sizing: border-box;
+//     margin: 0;
+//     padding: 0;
+//   }
+// }
+
+$primary-color: #f7f7f7;
+$accent-color: lightblue;
+$text-colors: (
+  "primary": red,
+  "secondary": blue,
+  "light": green,
+);
+
+$bg-colors: (
+  "primary": white,
+  "secondary": lightgreen,
+  "light": lightgrey,
+);
+
+$font-weights: (
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+);
+:export {
+  primaryColor: $primary-color;
+  accentColor: $accent-color;
+}
