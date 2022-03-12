@@ -106,23 +106,82 @@ $font-weights: (
   align-items: center;
   justify-content: center;
   padding: 1;
+  margin-left: 120px;
+  position: relative;
+
+  div {
+    visibility: hidden;
+    position: absolute;
+    opacity: 0;
+  }
+
+  &:hover {
+    div {
+      visibility: visible;
+      position: absolute;
+      opacity: 1;
+      top: 80px;
+      left: 0;
+      border-radius: 10px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
+        transform 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+
+      width: 500px;
+      height: 300px;
+    }
+  }
   li {
     cursor: pointer;
     width: 110px;
+    // color: $maxwell-dark-grey;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
     padding: 2px;
     padding-left: 10px;
     padding-right: 10px;
-    // &:not(:last-child) {
-    // }
+    position: relative;
+
+    &:hover {
+      color: $maxwell-orange-lighter;
+      transition: color 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+    }
   }
 }
 
-.headerNavActive {
-  background-color: $maxwell-orange;
-  color: white;
+.headerNavItemActive {
+  border-top: 3px solid $maxwell-orange;
+  color: $maxwell-orange;
+}
+
+.headerNavHomeHover {
+  transform: translate(0px, 0);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
+    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+}
+
+.headerNavMissionOSHover {
+  transform: translate(110px, 0);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
+    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+}
+
+.headerNavApplicationsHover {
+  transform: translate(220px, 0);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
+    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+}
+
+.headerNavProjectsHover {
+  transform: translate(330px, 0);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
+    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+}
+
+.headerNavServicesHover {
+  transform: translate(440px, 0);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
+    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
 }
