@@ -70,6 +70,39 @@ export const Header = (props: Props) => {
     "Project Management",
   ];
 
+  const getEdge = (e: React.MouseEvent<any, MouseEvent>) => {
+    let elemBounding = e.currentTarget.getBoundingClientRect();
+    var elementLeftEdge = elemBounding.left;
+    var elementTopEdge = elemBounding.top;
+    var elementRightEdge = elemBounding.right;
+    var elementBottomEdge = elemBounding.bottom;
+
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+
+    var topEdgeDist = Math.abs(elementTopEdge - mouseY);
+    var bottomEdgeDist = Math.abs(elementBottomEdge - mouseY);
+    var leftEdgeDist = Math.abs(elementLeftEdge - mouseX);
+    var rightEdgeDist = Math.abs(elementRightEdge - mouseX);
+
+    var min = Math.min(
+      topEdgeDist,
+      bottomEdgeDist,
+      leftEdgeDist,
+      rightEdgeDist
+    );
+    switch (min) {
+      case leftEdgeDist:
+        return "left";
+      case rightEdgeDist:
+        return "right";
+      case topEdgeDist:
+        return "top";
+      case bottomEdgeDist:
+        return "bottom";
+    }
+  };
+
   const ServicePartners = ["EtherTerra -- Intelligent Instrumentation"];
 
   return (
@@ -85,12 +118,23 @@ export const Header = (props: Props) => {
               <Box display={"flex"} alignItems="center">
                 <img src="/logofull.webp" width={220} />
 
-                <ul className={styles.headerNav}>
+                <ul
+                  onMouseLeave={(e) => {
+                    const leavingEdge = getEdge(e);
+
+                    if (
+                      leavingEdge === "left" ||
+                      leavingEdge === "right" ||
+                      leavingEdge === "top"
+                    ) {
+                      setHoveringTab("");
+                    }
+                  }}
+                  className={styles.headerNav}
+                >
                   {menus.map((menu) => (
                     <li
-                      onMouseEnter={() => {
-                        console.log(`changed to ${menu}`);
-
+                      onMouseEnter={(e) => {
                         setHoveringTab(menu);
                       }}
                       key={menu}
@@ -124,8 +168,39 @@ export const Header = (props: Props) => {
                         ? styles.headerNavServicesHover
                         : styles.headerNavItem
                     }
+                    style={{
+                      visibility: hoveringTab === "" ? "hidden" : "visible",
+                      opacity: hoveringTab === "" ? 0 : 1,
+                    }}
+                    onMouseLeave={(e) => {
+                      const leavingEdge = getEdge(e);
+
+                      if (
+                        leavingEdge === "left" ||
+                        leavingEdge === "right" ||
+                        leavingEdge === "bottom"
+                      ) {
+                        setHoveringTab("");
+                      }
+                    }}
                   >
-                    {hoveringTab}
+                    {hoveringTab === "Home" ? (
+                      <Box>Home</Box>
+                    ) : hoveringTab === "MissionOS" ? (
+                      <Box>
+                        {MissionOS.map((item) => (
+                          <Box sx={{ padding: 2 }} key={item}>
+                            {item}
+                          </Box>
+                        ))}
+                      </Box>
+                    ) : hoveringTab === "Applications" ? (
+                      <Box>dsgfdg</Box>
+                    ) : hoveringTab === "Projects" ? (
+                      <Box>dsgfdg</Box>
+                    ) : hoveringTab === "Services" ? (
+                      <Box>dsgfdg</Box>
+                    ) : null}
                   </div>
                 </ul>
               </Box>
