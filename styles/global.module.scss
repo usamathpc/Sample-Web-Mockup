@@ -1,11 +1,3 @@
-// .global {
-//   * {
-//     box-sizing: border-box;
-//     margin: 0;
-//     padding: 0;
-//   }
-// }
-
 $primary-color: #f7f7f7;
 $accent-color: lightblue;
 $text-colors: (
@@ -13,6 +5,11 @@ $text-colors: (
   "secondary": blue,
   "light": green,
 );
+$maxwell-orange: #fca51d;
+$maxwell-orange-light: #f2b66d;
+$maxwell-orange-lighter: #f2b66d;
+$maxwell-light-grey: #94a5ab;
+$maxwell-dark-grey: #525f64;
 
 $bg-colors: (
   "primary": white,
@@ -29,4 +26,103 @@ $font-weights: (
 :export {
   primaryColor: $primary-color;
   accentColor: $accent-color;
+  maxwellOrange: $maxwell-orange;
+  maxwellLightGrey: $maxwell-light-grey;
+  maxwellDarkGrey: $maxwell-dark-grey;
+}
+
+@mixin mobileHeaderStyles {
+  position: sticky;
+  border-bottom: 2px solid $maxwell-orange;
+  background-color: black;
+  transition: height 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+}
+
+.mobileHeaderOpen {
+  @include mobileHeaderStyles();
+  height: calc(100vh);
+}
+
+.mobileHeaderClosed {
+  @include mobileHeaderStyles();
+  height: 60px;
+  overflow: hidden;
+}
+
+@mixin listStyles {
+  color: $maxwell-orange;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  transition: height 1s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
+    opacity 0.2s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+  &:not(:last-child) {
+    border-bottom: 1px solid $maxwell-orange;
+  }
+}
+
+@mixin mobileHeaderNavStyles {
+  display: flex;
+  width: 200px;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: height 1s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+}
+
+.mobileHeaderNavOpen {
+  @include mobileHeaderNavStyles();
+  height: calc(100vh - 60px);
+  li {
+    @include listStyles();
+    height: 50px;
+    opacity: 1;
+  }
+}
+.mobileHeaderNavClosed {
+  @include mobileHeaderNavStyles();
+  height: 0;
+  overflow: hidden;
+  li {
+    @include listStyles();
+    height: 10px;
+    opacity: 0;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1;
+}
+
+.headerNav {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1;
+  li {
+    cursor: pointer;
+    width: 110px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    // &:not(:last-child) {
+    // }
+  }
+}
+
+.headerNavActive {
+  background-color: $maxwell-orange;
+  color: white;
 }
