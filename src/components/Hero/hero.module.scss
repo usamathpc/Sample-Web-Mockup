@@ -1,0 +1,91 @@
+.videoContainer {
+  width: 100vw;
+  height: 37vw;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  margin-top: 60px;
+  @media screen and (max-width: 900px) {
+    height: 50vw;
+  }
+  @media screen and (max-width: 600px) {
+    // padding: 50px;
+  }
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  padding: 70px;
+  @media screen and (max-width: 900px) {
+  }
+  @media screen and (max-width: 600px) {
+    padding: 30px;
+  }
+}
+
+.heroText {
+  background-image: linear-gradient(312deg, #fca51d, #94a5ab, #f7f7f7);
+  background-size: 250% 250%;
+  background-clip: text;
+  color: transparent;
+  font-size: 4rem;
+  font-weight: 700;
+
+  @media screen and (max-width: 900px) {
+    font-size: 3rem;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+
+  -webkit-animation: heroTextAnimation 15s ease infinite;
+  -moz-animation: heroTextAnimation 15s ease infinite;
+  animation: heroTextAnimation 15s ease infinite;
+}
+
+.heroText + p {
+  font-size: 1.5rem;
+  color: white;
+}
+
+@-webkit-keyframes heroTextAnimation {
+  0% {
+    background-position: 4% 0%;
+  }
+  50% {
+    background-position: 97% 100%;
+  }
+  100% {
+    background-position: 4% 0%;
+  }
+}
+@-moz-keyframes heroTextAnimation {
+  0% {
+    background-position: 4% 0%;
+  }
+  50% {
+    background-position: 97% 100%;
+  }
+  100% {
+    background-position: 4% 0%;
+  }
+}
+@keyframes heroTextAnimation {
+  0% {
+    background-position: 4% 0%;
+  }
+  50% {
+    background-position: 97% 100%;
+  }
+  100% {
+    background-position: 4% 0%;
+  }
+}
