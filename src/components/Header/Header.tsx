@@ -1,17 +1,19 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { Box, Button, Container, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Container, Text, useDisclosure } from "@chakra-ui/react";
 import React from "react";
+import { SiAbbrobotstudio } from "react-icons/si";
 import styles from "../../../styles/global.module.scss";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import headerStyles from "./header.module.scss";
 
 type Props = {};
 
 export const Header = (props: Props) => {
   const { isOpen, onToggle } = useDisclosure();
   const [activeTab, setActiveTab] = React.useState("Home");
-  const [hoveringTab, setHoveringTab] = React.useState("");
+  const [enteredTab, setEnteredTab] = React.useState("");
+  const [exitTab, setExitTab] = React.useState("");
   const isLargerThan1280 = useMediaQuery("1280");
-  console.log(isLargerThan1280);
 
   const menus = ["Home", "MissionOS", "Applications", "Projects", "Services"];
 
@@ -111,6 +113,11 @@ export const Header = (props: Props) => {
         <Box
           style={{
             boxShadow: `rgba(100, 100, 111, 0.2) 0px 7px 29px 0px`,
+            position: "fixed",
+            top: 0,
+            zIndex: 999,
+            width: `100%`,
+            backgroundColor: "white",
           }}
         >
           <Container maxW={"container.xl"}>
@@ -121,13 +128,13 @@ export const Header = (props: Props) => {
                 <ul
                   onMouseLeave={(e) => {
                     const leavingEdge = getEdge(e);
-
                     if (
                       leavingEdge === "left" ||
                       leavingEdge === "right" ||
                       leavingEdge === "top"
                     ) {
-                      setHoveringTab("");
+                      setEnteredTab("");
+                      setExitTab(enteredTab);
                     }
                   }}
                   className={styles.headerNav}
@@ -135,7 +142,7 @@ export const Header = (props: Props) => {
                   {menus.map((menu) => (
                     <li
                       onMouseEnter={(e) => {
-                        setHoveringTab(menu);
+                        setEnteredTab(menu);
                       }}
                       key={menu}
                       className={
@@ -156,21 +163,31 @@ export const Header = (props: Props) => {
                   ))}
                   <div
                     className={
-                      hoveringTab === "Home"
+                      enteredTab === "Home"
                         ? styles.headerNavHomeHover
-                        : hoveringTab === "MissionOS"
+                        : enteredTab === "MissionOS"
                         ? styles.headerNavMissionOSHover
-                        : hoveringTab === "Applications"
+                        : enteredTab === "Applications"
                         ? styles.headerNavApplicationsHover
-                        : hoveringTab === "Projects"
+                        : enteredTab === "Projects"
                         ? styles.headerNavProjectsHover
-                        : hoveringTab === "Services"
+                        : enteredTab === "Services"
                         ? styles.headerNavServicesHover
-                        : styles.headerNavItem
+                        : exitTab === "Home"
+                        ? styles.headerNavHomeExit
+                        : exitTab === "MissionOS"
+                        ? styles.headerNavMissionOSExit
+                        : exitTab === "Applications"
+                        ? styles.headerNavApplicationsExit
+                        : exitTab === "Projects"
+                        ? styles.headerNavProjectsExit
+                        : exitTab === "Services"
+                        ? styles.headerNavServicesExit
+                        : undefined
                     }
                     style={{
-                      visibility: hoveringTab === "" ? "hidden" : "visible",
-                      opacity: hoveringTab === "" ? 0 : 1,
+                      // visibility: enteredTab === "" ? "hidden" : "visible",
+                      opacity: enteredTab === "" ? 0 : 1,
                     }}
                     onMouseLeave={(e) => {
                       const leavingEdge = getEdge(e);
@@ -180,25 +197,31 @@ export const Header = (props: Props) => {
                         leavingEdge === "right" ||
                         leavingEdge === "bottom"
                       ) {
-                        setHoveringTab("");
+                        setEnteredTab("");
+                        setExitTab(enteredTab);
                       }
                     }}
                   >
-                    {hoveringTab === "Home" ? (
+                    {enteredTab === "Home" ? (
                       <Box>Home</Box>
-                    ) : hoveringTab === "MissionOS" ? (
+                    ) : enteredTab === "MissionOS" ? (
                       <Box>
                         {MissionOS.map((item) => (
-                          <Box sx={{ padding: 2 }} key={item}>
-                            {item}
+                          <Box
+                            className={headerStyles.navItemListItem}
+                            sx={{ padding: 2 }}
+                            key={item}
+                          >
+                            <SiAbbrobotstudio />
+                            <Text>{item}</Text>
                           </Box>
                         ))}
                       </Box>
-                    ) : hoveringTab === "Applications" ? (
+                    ) : enteredTab === "Applications" ? (
                       <Box>dsgfdg</Box>
-                    ) : hoveringTab === "Projects" ? (
+                    ) : enteredTab === "Projects" ? (
                       <Box>dsgfdg</Box>
-                    ) : hoveringTab === "Services" ? (
+                    ) : enteredTab === "Services" ? (
                       <Box>dsgfdg</Box>
                     ) : null}
                   </div>
