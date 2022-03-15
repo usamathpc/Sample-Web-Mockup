@@ -1,9 +1,11 @@
 import { Box, SimpleGrid, Text } from "@chakra-ui/react";
-import RecentWorkComponent from "./RecentWorkComponent";
-
 import styles from "../../../styles/global.module.scss";
+import RecentWorkComponent from "./RecentWorkComponent";
+import { RecentWorksData } from "./RecentWorksData";
 
-export const RecentWorks = () => {
+type Props = {};
+
+export const RecentWorks = (props: Props) => {
   return (
     <Box
       style={{
@@ -14,7 +16,7 @@ export const RecentWorks = () => {
         marginBottom: "100px",
       }}
     >
-      <SimpleGrid columns={[1]} spacing={12}>
+      <SimpleGrid columns={[1]} spacing={8}>
         <Box>
           <Text
             sx={{
@@ -51,9 +53,17 @@ export const RecentWorks = () => {
         >
           Selected Projects
         </Text>
-        <RecentWorkComponent />
-        <RecentWorkComponent />
-        <RecentWorkComponent />
+
+        {RecentWorksData.map((data) => (
+          <RecentWorkComponent
+            key={data.id}
+            description={data.description}
+            imageUrl={data.imageUrl}
+            stats={data.stats}
+            tags={data.tags}
+            title={data.title}
+          />
+        ))}
       </SimpleGrid>
     </Box>
   );
