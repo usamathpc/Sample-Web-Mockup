@@ -38,7 +38,7 @@ $font-weights: (
   z-index: 999;
 
   border-bottom: 2px solid $maxwell-orange;
-  background-color: black;
+  background-color: #222222;
   transition: height 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
 }
 
@@ -151,4 +151,8 @@ $font-weights: (
   @media screen and (max-width: 600px) {
     font-size: 1.5rem;
   }
+}
+
+.preventScroll {
+  overflow: hidden;
 }
