@@ -73,7 +73,6 @@ const Footer = () => {
                   <Text
                     key={index}
                     sx={{
-                      color: "#f7f7f7",
                       p: 1,
                     }}
                     className={styles.footerItem}
@@ -95,7 +94,6 @@ const Footer = () => {
                   <Text
                     key={index}
                     sx={{
-                      color: "#f7f7f7",
                       p: 1,
                     }}
                     className={styles.footerItem}
@@ -117,7 +115,6 @@ const Footer = () => {
                   <Text
                     key={index}
                     sx={{
-                      color: "#f7f7f7",
                       p: 1,
                     }}
                     className={styles.footerItem}
@@ -139,7 +136,6 @@ const Footer = () => {
                   <Text
                     key={index}
                     sx={{
-                      color: "#f7f7f7",
                       p: 1,
                     }}
                     className={styles.footerItem}
@@ -205,7 +201,7 @@ const Footer = () => {
           }}
           className={styles.copyright}
         >
-          {`Copyright © ${new Date().getFullYear()} MGS. All rights reserved.`}
+          {`Copyright © ${new Date().getFullYear()}, Usamath Pallikkachalil`}
         </Text>
       </Box>
     </Box>

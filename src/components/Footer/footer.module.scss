@@ -36,20 +36,12 @@
 }
 
 .footerItem {
+  color: lightgray;
   &:hover {
     cursor: pointer;
     border-radius: 5px;
     color: #f2b66d;
   }
-}
-
-.socialLinks {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  background-color: lightblue;
 }
 
 .footerMain {
@@ -66,6 +58,7 @@
 }
 
 .copyright {
+  color: lightgray;
   @media screen and (max-width: 600px) {
     font-size: 0.7rem;
   }
