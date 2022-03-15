@@ -64,3 +64,9 @@
     color: #f2b66d;
   }
 }
+
+.copyright {
+  @media screen and (max-width: 600px) {
+    font-size: 0.7rem;
+  }
+}

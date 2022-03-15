@@ -34,7 +34,7 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        bg: "gray.800",
+        bg: "#222222",
         mt: "40px",
       }}
     >
@@ -203,6 +203,7 @@ const Footer = () => {
             alignItems: "center",
             justifyContent: "center",
           }}
+          className={styles.copyright}
         >
           {`Copyright © ${new Date().getFullYear()} MGS. All rights reserved.`}
         </Text>
