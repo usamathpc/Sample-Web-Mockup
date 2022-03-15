@@ -1,0 +1,66 @@
+.contactUsText {
+  color: #fca51d;
+  font-size: 1.25rem;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.contactUsInput {
+  background-color: #f7f7f7;
+  z-index: 9999;
+}
+
+.contactUs {
+  background-color: #f7f7f7;
+  padding: 1.5rem;
+  height: 500px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.contactUsContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.footerTitle {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.footerItem {
+  &:hover {
+    cursor: pointer;
+    border-radius: 5px;
+    color: #f2b66d;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: lightblue;
+}
+
+.footerMain {
+  @media screen and (min-width: 900px) {
+    margin-left: 14rem;
+  }
+}
+
+.mobileMenuItem {
+  cursor: pointer;
+  &:hover {
+    color: #f2b66d;
+  }
+}
