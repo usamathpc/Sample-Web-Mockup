@@ -1,0 +1,85 @@
+.recentWorksItemImageContainer {
+  position: relative;
+  width: 600px;
+  height: 500px;
+  border-radius: 10px;
+  background-color: black;
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}
+
+.recentWorksItemImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  border-radius: 10px;
+  @media screen and (max-width: 900px) {
+    display: none;
+    font-size: 3rem;
+    left: 10%;
+  }
+}
+
+.recentWorksItemTitle {
+  font-weight: 700;
+  position: absolute;
+  border-radius: 4px solid red;
+  z-index: 22;
+  font-size: 4rem;
+  top: 10px;
+  width: max-content;
+  left: 80%;
+  color: #fca51d;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}
+.recentWorksItemTitleForSmallScreen {
+  display: none;
+  @media screen and (max-width: 900px) {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: 22;
+
+    width: max-content;
+
+    color: #fca51d;
+  }
+}
+
+.recentWorksItemDataContainer {
+  height: 500px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media screen and (max-width: 900px) {
+    margin-left: 0px;
+    height: auto;
+  }
+}
+
+.recentWorksItemDescriptionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: justify;
+
+  @media screen and (max-width: 900px) {
+    margin-top: 0px;
+  }
+}
+.recentWorksItemDescription {
+  color: #525f64;
+  text-align: justify;
+  margin-top: 90px;
+  margin-bottom: 20px;
+  @media screen and (max-width: 900px) {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}

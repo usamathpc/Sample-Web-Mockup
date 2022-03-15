@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Divider, Flex, SimpleGrid, Tag, Text } from "@chakra-ui/react";
 import { MdAttachMoney } from "react-icons/md";
-import styles from "./styles.module.scss";
+import styles from "./recentworks.module.scss";
 import { StatsCard } from "./StatsCard";
 
 import { useMediaQuery } from "../../hooks/useMediaQuery";
