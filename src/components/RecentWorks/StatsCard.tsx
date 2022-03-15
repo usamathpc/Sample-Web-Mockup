@@ -28,7 +28,13 @@ export const StatsCard = (props: Props) => {
         >
           {props.title}
         </Text>
-        {props.icon}
+        <Text
+          sx={{
+            color: "#fca51d",
+          }}
+        >
+          {props.icon}
+        </Text>
       </Flex>
       <Divider />
 
