@@ -1,5 +1,6 @@
 import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
+import { BsLock } from "react-icons/bs";
 import { GoSettings } from "react-icons/go";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { SiGoogleanalytics } from "react-icons/si";
@@ -50,15 +51,15 @@ const Features = () => {
           icon={<MdOutlineSpaceDashboard />}
           title="Control of Process"
           description="MissionOS records technical data from the construction process including data logged equipment such as Tunnel Boring Machines, Drilling Jumbos and Piling Rigs.
-          Comparing this data to instrument results and to design predictions allows the construction methods to be refined in real-time to improve efficiency and safety in the construction process."
+          Comparing this data to instrument results and to design predictions allows the construction methods to be refined in real-time."
         />
         <FeatureCard
           icon={<GoSettings />}
-          title="Risk Management and Mitigation"
+          title="Risk Management"
           description="The MissionOS provides an effective interface for recording hazards linked to geographical locations and job activities. Organisation of this data enhances the risk assessment and classification process and allows mitigation methods to be tracked using the in-built blogging platform."
         />
         <FeatureCard
-          icon={<GoSettings />}
+          icon={<BsLock />}
           title="Protection"
           description="Our clients rely on the MissionOS to manage instrumentation installed for the protection of assets influenced by construction processes. Building damage assessment can also be undertaken directly within the MissionOS. Filters and alarms are fully customisable and alarms can be directed to emails and SMS as well as to custom blogs."
         />
