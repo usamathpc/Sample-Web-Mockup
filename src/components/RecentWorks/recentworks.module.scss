@@ -1,6 +1,6 @@
 .recentWorksItemImageContainer {
   position: relative;
-  width: 600px;
+  width: 900px;
   height: 500px;
   border-radius: 10px;
   background-color: black;
@@ -13,7 +13,7 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-  opacity: 0.5;
+  opacity: 0.4;
   border-radius: 10px;
   @media screen and (max-width: 900px) {
     display: none;
@@ -30,7 +30,7 @@
   font-size: 4rem;
   top: 10px;
   width: max-content;
-  left: 80%;
+  left: 50%;
   color: #fca51d;
 
   @media screen and (max-width: 900px) {
