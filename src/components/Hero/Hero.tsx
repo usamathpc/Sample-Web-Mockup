@@ -6,13 +6,12 @@ import styles from "./hero.module.scss";
 const Hero = () => {
   const isLargerThan1280 = useMediaQuery("1280");
   const isLargerThan950 = useMediaQuery("950");
-  const isLargerThan600 = useMediaQuery("600");
 
   return (
     <div className={styles.videoContainer}>
       <video src="/hero.webm" loop autoPlay muted />
       <div className={styles.videoOverlay}>
-        <div>
+        <div className={styles.textContainer}>
           <h1 className={styles.heroText}>
             Software Solutions <br />
             <span>For Construction Data</span>
@@ -27,28 +26,25 @@ const Hero = () => {
                   : "1rem",
               }}
             >
-              We provide world-leading, industry standard software platforms
-              <br /> for the display and interpretation of construction data.
+              We provide world-class, industry standard software platforms
+              <br /> for the display and interpretation of geotechnical and
+              civil engineering data.
             </p>
           )}
           <Button
-            size={isLargerThan1280 ? "lg" : isLargerThan950 ? "md" : "sm"}
+            size={isLargerThan1280 ? "lg" : isLargerThan950 ? "md" : "xs"}
             sx={{
               mt: 10,
-              backgroundColor: "#f2b66d",
             }}
           >
             Discover Mission OS
           </Button>
           <Button
-            size={isLargerThan1280 ? "lg" : isLargerThan950 ? "md" : "sm"}
+            size={isLargerThan1280 ? "lg" : isLargerThan950 ? "md" : "xs"}
             variant={"outline"}
-            borderColor={"#f2b66d"}
-            color={"#f2b66d"}
             sx={{
               mt: 10,
               ml: 5,
-              // backgroundColor: "#f2b66d",
             }}
           >
             Request Product Demo
