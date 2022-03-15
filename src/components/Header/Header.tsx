@@ -1,10 +1,8 @@
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { Box, Button, Container, Text, useDisclosure } from "@chakra-ui/react";
-import React from "react";
-import { SiAbbrobotstudio } from "react-icons/si";
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { Box, Button, Container, useDisclosure } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 import styles from "../../../styles/global.module.scss";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import headerStyles from "./header.module.scss";
 
 type Props = {};
 
@@ -12,6 +10,16 @@ export const Header = (props: Props) => {
   const { isOpen, onToggle } = useDisclosure();
   const [activeTab, setActiveTab] = React.useState("Home");
   const isLargerThan1280 = useMediaQuery("900");
+
+  useEffect(() => {
+    const body = document.querySelector("body");
+
+    if (isOpen) {
+      body?.classList.add(styles.preventScroll);
+    } else if (!isOpen) {
+      body?.classList.remove(styles.preventScroll);
+    }
+  }, [isOpen]);
 
   const menus = ["Home", "MissionOS", "Applications"];
 
@@ -31,7 +39,13 @@ export const Header = (props: Props) => {
           <Container maxW={"container.xl"}>
             <Box className={styles.header}>
               <Box display={"flex"} alignItems="center">
-                <img src="/logofull.webp" width={220} />
+                <img
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  src="/logofull.webp"
+                  width={220}
+                />
 
                 <ul className={styles.headerNav}>
                   {menus.map((menu) => (
@@ -44,9 +58,10 @@ export const Header = (props: Props) => {
                       }
                     >
                       <a
-                        href={`/${menu.toLowerCase()}`}
-                        onClick={() => {
-                          setActiveTab(menu);
+                        href={`/`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          // setActiveTab(menu);
                         }}
                       >
                         {menu}
@@ -75,16 +90,29 @@ export const Header = (props: Props) => {
           >
             <img src="/log.png" width={50} />
 
-            <HamburgerIcon
-              sx={{
-                color: styles.maxwellOrange,
-                fontSize: "2rem",
-                pr: 2,
-              }}
-              onClick={() => {
-                onToggle();
-              }}
-            />
+            {isOpen ? (
+              <CloseIcon
+                sx={{
+                  color: styles.maxwellOrange,
+                  fontSize: "2rem",
+                  pr: 2,
+                }}
+                onClick={() => {
+                  onToggle();
+                }}
+              />
+            ) : (
+              <HamburgerIcon
+                sx={{
+                  color: styles.maxwellOrange,
+                  fontSize: "2rem",
+                  pr: 2,
+                }}
+                onClick={() => {
+                  onToggle();
+                }}
+              />
+            )}
           </Box>
 
           <ul
