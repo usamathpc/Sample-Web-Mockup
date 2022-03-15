@@ -115,26 +115,8 @@ $font-weights: (
   align-items: center;
   justify-content: center;
   padding: 1;
-  margin-left: 120px;
+  margin-left: 220px;
   position: relative;
-
-  > div {
-    // visibility: visible;
-    z-index: 9999;
-    background-color: #f7f7f7;
-    position: absolute;
-    padding: 10px;
-    opacity: 1;
-    top: 80px;
-    left: 0;
-    border-radius: 10px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
-      transform 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
-
-    width: 500px;
-    min-height: 300px;
-  }
 
   li {
     cursor: pointer;
@@ -145,6 +127,8 @@ $font-weights: (
     align-items: center;
     justify-content: center;
     padding: 2px;
+    border-top: 3px solid transparent;
+
     padding-left: 10px;
     padding-right: 10px;
     position: relative;
@@ -157,55 +141,14 @@ $font-weights: (
 }
 
 .headerNavItemActive {
-  border-top: 3px solid $maxwell-orange;
+  border-top: 3px solid $maxwell-orange !important;
   color: $maxwell-orange;
 }
 
-.headerNavHomeHover {
-  transform: translate(0px, 0);
-  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
-    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
-}
-
-.headerNavMissionOSHover {
-  transform: translate(110px, 0);
-  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
-    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
-}
-
-.headerNavApplicationsHover {
-  transform: translate(220px, 0);
-  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
-    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
-}
-
-.headerNavProjectsHover {
-  transform: translate(330px, 0);
-  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
-    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
-}
-
-.headerNavServicesHover {
-  transform: translate(440px, 0);
-  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms,
-    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms;
-}
-.headerNavHomeExit {
-  transform: translate(0px, 0);
-}
-
-.headerNavMissionOSExit {
-  transform: translate(110px, 0);
-}
-
-.headerNavApplicationsExit {
-  transform: translate(220px, 0);
-}
-
-.headerNavProjectsExit {
-  transform: translate(330px, 0);
-}
-
-.headerNavServicesExit {
-  transform: translate(440px, 0);
+.subHeading {
+  font-size: 2rem;
+  font-weight: 700;
+  @media screen and (max-width: 600px) {
+    font-size: 1.5rem;
+  }
 }
