@@ -11,101 +11,9 @@ type Props = {};
 export const Header = (props: Props) => {
   const { isOpen, onToggle } = useDisclosure();
   const [activeTab, setActiveTab] = React.useState("Home");
-  const [enteredTab, setEnteredTab] = React.useState("");
-  const [exitTab, setExitTab] = React.useState("");
-  const isLargerThan1280 = useMediaQuery("1280");
+  const isLargerThan1280 = useMediaQuery("900");
 
-  const menus = ["Home", "MissionOS", "Applications", "Projects", "Services"];
-
-  const MissionOS = [
-    "Mission Monitor",
-    "Mission Designer",
-    "Mission Site",
-    "Mission Builder",
-    "Mission Enterprise",
-  ];
-
-  const Applications = [
-    "Bridges",
-    "Dams",
-    "Excavation",
-    "Reclamation",
-    "Buildings",
-    "Slopes",
-    "Mining",
-    "Tunnels",
-    "Asset Management",
-  ];
-
-  const Projects = [
-    {
-      name: "Hinkley Point C",
-      location: "UK",
-      type: "Excavation",
-    },
-    {
-      name: "Sydney Metro",
-      location: "AUS",
-      type: "Urban Metro 3",
-    },
-    {
-      name: "Melbourne Metro",
-      location: "AUS",
-      type: "Urban Metro 2",
-    },
-    {
-      name: `Earl's Court`,
-      location: "UK",
-      type: "Demolition",
-    },
-    {
-      name: `DTSS2`,
-      location: "SGP",
-      type: "Urban Sewer",
-    },
-  ];
-
-  const Services = [
-    "Software",
-    "Consultancy",
-    "Measurements",
-    "Project Management",
-  ];
-
-  const getEdge = (e: React.MouseEvent<any, MouseEvent>) => {
-    let elemBounding = e.currentTarget.getBoundingClientRect();
-    var elementLeftEdge = elemBounding.left;
-    var elementTopEdge = elemBounding.top;
-    var elementRightEdge = elemBounding.right;
-    var elementBottomEdge = elemBounding.bottom;
-
-    var mouseX = e.pageX;
-    var mouseY = e.pageY;
-
-    var topEdgeDist = Math.abs(elementTopEdge - mouseY);
-    var bottomEdgeDist = Math.abs(elementBottomEdge - mouseY);
-    var leftEdgeDist = Math.abs(elementLeftEdge - mouseX);
-    var rightEdgeDist = Math.abs(elementRightEdge - mouseX);
-
-    var min = Math.min(
-      topEdgeDist,
-      bottomEdgeDist,
-      leftEdgeDist,
-      rightEdgeDist
-    );
-    switch (min) {
-      case leftEdgeDist:
-        return "left";
-      case rightEdgeDist:
-        return "right";
-      case topEdgeDist:
-        return "top";
-      case bottomEdgeDist:
-        return "bottom";
-    }
-  };
-
-  const ServicePartners = ["EtherTerra -- Intelligent Instrumentation"];
+  const menus = ["Home", "MissionOS", "Applications"];
 
   return (
     <Box>
@@ -125,25 +33,9 @@ export const Header = (props: Props) => {
               <Box display={"flex"} alignItems="center">
                 <img src="/logofull.webp" width={220} />
 
-                <ul
-                  onMouseLeave={(e) => {
-                    const leavingEdge = getEdge(e);
-                    if (
-                      leavingEdge === "left" ||
-                      leavingEdge === "right" ||
-                      leavingEdge === "top"
-                    ) {
-                      setEnteredTab("");
-                      setExitTab(enteredTab);
-                    }
-                  }}
-                  className={styles.headerNav}
-                >
+                <ul className={styles.headerNav}>
                   {menus.map((menu) => (
                     <li
-                      onMouseEnter={(e) => {
-                        setEnteredTab(menu);
-                      }}
                       key={menu}
                       className={
                         activeTab === menu
@@ -161,70 +53,6 @@ export const Header = (props: Props) => {
                       </a>
                     </li>
                   ))}
-                  <div
-                    className={
-                      enteredTab === "Home"
-                        ? styles.headerNavHomeHover
-                        : enteredTab === "MissionOS"
-                        ? styles.headerNavMissionOSHover
-                        : enteredTab === "Applications"
-                        ? styles.headerNavApplicationsHover
-                        : enteredTab === "Projects"
-                        ? styles.headerNavProjectsHover
-                        : enteredTab === "Services"
-                        ? styles.headerNavServicesHover
-                        : exitTab === "Home"
-                        ? styles.headerNavHomeExit
-                        : exitTab === "MissionOS"
-                        ? styles.headerNavMissionOSExit
-                        : exitTab === "Applications"
-                        ? styles.headerNavApplicationsExit
-                        : exitTab === "Projects"
-                        ? styles.headerNavProjectsExit
-                        : exitTab === "Services"
-                        ? styles.headerNavServicesExit
-                        : undefined
-                    }
-                    style={{
-                      // visibility: enteredTab === "" ? "hidden" : "visible",
-                      opacity: enteredTab === "" ? 0 : 1,
-                    }}
-                    onMouseLeave={(e) => {
-                      const leavingEdge = getEdge(e);
-
-                      if (
-                        leavingEdge === "left" ||
-                        leavingEdge === "right" ||
-                        leavingEdge === "bottom"
-                      ) {
-                        setEnteredTab("");
-                        setExitTab(enteredTab);
-                      }
-                    }}
-                  >
-                    {enteredTab === "Home" ? (
-                      <Box>Home</Box>
-                    ) : enteredTab === "MissionOS" ? (
-                      <Box>
-                        {MissionOS.map((item) => (
-                          <Box
-                            className={headerStyles.navItemListItem}
-                            sx={{ padding: 2 }}
-                            key={item}
-                          >
-                            <SiAbbrobotstudio />
-                            <Text>{item}</Text>
-                          </Box>
-                        ))}
-                      </Box>
-                    ) : enteredTab === "Applications" ? (
-                      <Box>dsgfdg</Box>
-                    ) : enteredTab === "Projects" ? (
-                      <Box>dsgfdg</Box>
-                    ) : enteredTab === "Services" ? (
-                      <Box>dsgfdg</Box>
-                    ) : null}
-                  </div>
                 </ul>
               </Box>
               <Button>Sign Up</Button>
@@ -264,14 +92,11 @@ export const Header = (props: Props) => {
               isOpen ? styles.mobileHeaderNavOpen : styles.mobileHeaderNavClosed
             }
           >
-            <li>Home</li>
-            <li>MissionOS</li>
-            <li>Applications</li>
-            <li>Projects</li>
-            <li>Services</li>
-            <li>Media Hub</li>
-            <li>About</li>
-            <li>Sign Up</li>
+            {menus.map((menu, index) => (
+              <li className={styles.mobileMenuItem} key={index}>
+                {menu}
+              </li>
+            ))}
           </ul>
         </Box>
       )}
